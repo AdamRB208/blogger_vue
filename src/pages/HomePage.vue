@@ -1,13 +1,11 @@
-<script setup >
-import Example from '@/components/Example.vue';
+<script setup>
+
 
 
 </script>
 
 <template>
-  <Example />
+  <div>blogs will go here</div>
 </template>
 
-<style scoped lang="scss">
-
-</style>
+<style scoped lang="scss"></style>
