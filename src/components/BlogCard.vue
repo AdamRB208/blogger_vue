@@ -11,11 +11,11 @@ defineProps({
 <template>
   <div class="mt-3 mb-3 border border-3 border-custom-purple rounded-4 p-2 blog-card">
     <div class="d-flex align-items-center">
-      <!-- <RouterLink :to="{ name: 'Profile', params: { profileId: blogProp.creatorId } }"> -->
-      <img :src="blogProp.creator.picture" alt="profile picture for user" class="creator-img me-3 mb-3"
-        :title="`Check out ${blogProp.creator.name}'s profile'`">
-      <span>{{ blogProp.creator.name }}</span>
-      <!-- </RouterLink> -->
+      <RouterLink :to="{ name: 'Profile', params: { profileId: blogProp.creator.id } }">
+        <img :src="blogProp.creator.picture" alt="profile picture for user" class="creator-img me-3 mb-3"
+          :title="`Check out ${blogProp.creator.name}'s profile'`">
+        <span>{{ blogProp.creator.name }}</span>
+      </RouterLink>
     </div>
     <div>
       <img
