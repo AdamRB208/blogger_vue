@@ -1,6 +1,5 @@
 <script setup>
 import { AppState } from '@/AppState.js';
-import { Blog } from '@/models/Blogs.js';
 import { computed } from 'vue';
 
 
