@@ -1,10 +1,18 @@
 <script setup>
 import { Blog } from '@/models/Blogs.js';
+import { blogService } from '@/services/BlogService.js';
+import { logger } from '@/utils/Logger.js';
+import { Pop } from '@/utils/Pop.js';
 
 
-defineProps({
+const props = defineProps({
   blogProp: { type: Blog, required: true }
 })
+
+function setActiveBlog() {
+  blogService.setActiveBlog(props.blogProp)
+  logger.log('Set active blog!')
+}
 </script>
 
 
@@ -18,11 +26,14 @@ defineProps({
       </RouterLink>
     </div>
     <div>
-      <img
-        :src="blogProp.imgUrl || 'https://media.istockphoto.com/id/1573249349/photo/cat-face-meme.webp?a=1&b=1&s=612x612&w=0&k=20&c=kqbadSpx9y1sUvUjbO-zTr4iRDv2inL5XfOhts5-jGs='"
-        :alt="`image for ${blogProp.creator.name}'s' blog ${blogProp.title}`" class="image-fluid mb-2 rounded-4">
+      <button @click="setActiveBlog()" type="button" class="btn btn-custom-purple rounded-4" data-bs-toggle="blogModal"
+        data-bs-target="#blogModal">
+        <img
+          :src="blogProp.imgUrl || 'https://media.istockphoto.com/id/1573249349/photo/cat-face-meme.webp?a=1&b=1&s=612x612&w=0&k=20&c=kqbadSpx9y1sUvUjbO-zTr4iRDv2inL5XfOhts5-jGs='"
+          :alt="blogProp.id" class="image-fluid mb-2 rounded-4">
+      </button>
       <h4>{{ blogProp.title }}</h4>
-      <p>{{ blogProp.body }}</p>
+      <p class="blog-body">{{ blogProp.body }}</p>
       <small>{{ blogProp.createdAt }}</small>
     </div>
   </div>
@@ -46,8 +57,18 @@ img:not(.creator-img) {
   background-color: rgba(128, 128, 128, 0.531);
 }
 
+.blog-body {
+  max-height: 20dvh;
+  overflow: hidden;
+}
+
 small {
   display: flex;
   justify-content: center;
+}
+
+a {
+  color: var(--bs-body-color);
+  text-decoration: none;
 }
 </style>
