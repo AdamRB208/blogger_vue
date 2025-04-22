@@ -1,5 +1,7 @@
 <script setup>
+import { AppState } from '@/AppState.js';
 import { Blog } from '@/models/Blogs.js';
+import BlogModal from '@/pages/BlogModal.vue';
 import { blogService } from '@/services/BlogService.js';
 import { logger } from '@/utils/Logger.js';
 import { Pop } from '@/utils/Pop.js';
@@ -26,7 +28,7 @@ function setActiveBlog() {
       </RouterLink>
     </div>
     <div>
-      <button @click="setActiveBlog()" type="button" class="btn btn-custom-purple rounded-4" data-bs-toggle="blogModal"
+      <button @click="setActiveBlog()" type="button" class="btn btn-custom-purple rounded-4" data-bs-toggle="modal"
         data-bs-target="#blogModal">
         <img
           :src="blogProp.imgUrl || 'https://media.istockphoto.com/id/1573249349/photo/cat-face-meme.webp?a=1&b=1&s=612x612&w=0&k=20&c=kqbadSpx9y1sUvUjbO-zTr4iRDv2inL5XfOhts5-jGs='"
