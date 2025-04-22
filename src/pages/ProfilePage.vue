@@ -36,13 +36,27 @@ async function getProfileById() {
 
 <template>
   <section class="container">
-    <div class="row">
-      <div class="col">
-        <div>{{ profile }}</div>
+    <div v-if="profile" class="row justify-content-center">
+      <div class="col-md-10 d-flex justify-content-evenly m-5 border border-custom-purple rounded-4 p-3">
+        <img :src="profile.picture" :alt="`profile image of ${profile.name}`" class="profile-img">
+        <h3>{{ profile.name }}</h3>
       </div>
     </div>
   </section>
 </template>
 
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.profile-img {
+  max-height: 40dvh;
+  max-width: 40dvh;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+h3 {
+  display: inline-flex;
+  align-items: center;
+}
+</style>

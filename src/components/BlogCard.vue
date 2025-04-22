@@ -1,10 +1,7 @@
 <script setup>
-import { AppState } from '@/AppState.js';
 import { Blog } from '@/models/Blogs.js';
-import BlogModal from '@/pages/BlogModal.vue';
 import { blogService } from '@/services/BlogService.js';
 import { logger } from '@/utils/Logger.js';
-import { Pop } from '@/utils/Pop.js';
 
 
 const props = defineProps({
