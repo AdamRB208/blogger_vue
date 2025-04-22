@@ -17,7 +17,7 @@ watch(theme, () => {
 </script>
 
 <template>
-  <nav class="navbar navbar-expand-md bg-codeworks border-bottom border-custom-green">
+  <nav class="navbar navbar-expand-md bg-custom-purple border-bottom border-custom-green">
     <div class="container gap-2">
       <RouterLink :to="{ name: 'Home' }" class="d-flex align-items-center text-light">
         <b class="fs-3 text-custom-green">Blogger</b>
@@ -31,7 +31,7 @@ watch(theme, () => {
       <div class="collapse navbar-collapse " id="navbar-links">
         <ul class="navbar-nav">
           <li>
-            <RouterLink :to="{ name: 'About' }" class="btn text-custom-purple selectable">
+            <RouterLink :to="{ name: 'About' }" class="btn rounded-pill text-custom-purple selectable">
               About
             </RouterLink>
           </li>
@@ -63,5 +63,11 @@ a {
   border-bottom: 2px solid var(--bs-success);
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+}
+
+.rounded-pill {
+  background-color: rgba(128, 128, 128, 0.91);
+  text-shadow: .5px .5px rgb(125, 124, 124);
+  margin-left: 2em;
 }
 </style>
