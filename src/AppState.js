@@ -10,7 +10,7 @@ export const AppState = reactive({
   blogs: [],
   /** @type {import('./models/Blogs.js').Blog} user info from the Codeworks API*/
   activeBlog: null,
-  /** @type {import('./models/Account.js').Account} selected profile from the database*/
+  /** @type {import('./models/Profile.js').Profile} selected profile from the database*/
   activeProfile: null,
 })
 

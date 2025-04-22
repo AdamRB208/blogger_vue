@@ -1,21 +1,30 @@
 <script setup>
 import { AppState } from '@/AppState.js';
+import { Profile } from '@/models/Profile.js';
 import { profileService } from '@/services/ProfileService.js';
 import { logger } from '@/utils/Logger.js';
 import { Pop } from '@/utils/Pop.js';
-import { computed } from 'vue';
+import { computed, onMounted, watch } from 'vue';
 import { useRoute } from 'vue-router';
 
 
 const route = useRoute()
 
-const profile = computed(() => AppState.account)
+const profile = computed(() => AppState.activeProfile)
+
+
+onMounted(() => {
+  getProfileById()
+})
+
+watch(route, () => {
+  getProfileById()
+})
 
 
 async function getProfileById() {
   try {
-    const creatorId = route.params.creatorId
-    await profileService.getProfileById(creatorId)
+    await profileService.getProfileById(route.params.profileId)
   }
   catch (error) {
     Pop.error(error, 'COULD NOT GET PROFILE BY ID');
