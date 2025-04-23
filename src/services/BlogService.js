@@ -4,6 +4,14 @@ import { Blog } from "@/models/Blogs.js"
 import { AppState } from "@/AppState.js"
 
 class BlogService {
+  async deleteBlog(blogId) {
+    const response = await api.delete(`api/blogs/${blogId}`)
+    logger.log('deleted blog', response.data)
+    const blogs = AppState.blogs
+    const blogsIndex = blogs.findIndex(blogs => blogs.id == blogId)
+    blogs.splice(blogsIndex, 1)
+  }
+
   async createBlog(value) {
     const response = await api.post('api/blogs', value)
     logger.log('created blog', response.data)

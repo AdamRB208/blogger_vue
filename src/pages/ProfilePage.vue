@@ -28,6 +28,7 @@ onMounted(() => {
 watch(route, () => {
   getProfileById()
   getBlogsById()
+
 })
 
 
@@ -68,7 +69,6 @@ async function getBlogsById() {
 
   <section class="container">
     <div class="row justify-content-center">
-      <h3 class="d-flex justify-content-center">{{ profile.name }}'s Blogs</h3>
       <div v-for="Blog in blogs" :key="Blog.id" class="col-md-10 p-0">
         <BlogCard :blogProp="Blog" />
       </div>
@@ -89,10 +89,6 @@ async function getBlogsById() {
 h2 {
   display: inline-flex;
   align-items: center;
-}
-
-h3 {
-  color: #B8ED12;
 }
 
 .profile-card {

@@ -8,7 +8,6 @@ import { Pop } from '@/utils/Pop.js';
 import { computed, onMounted } from 'vue';
 import BlogModal from './BlogModal.vue';
 
-
 const blogs = computed(() => AppState.blogs)
 
 onMounted(() => {
