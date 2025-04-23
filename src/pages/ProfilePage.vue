@@ -60,12 +60,16 @@ async function getBlogsById() {
         <h3>{{ profile.name }}</h3>
       </div>
     </div>
+  </section>
+
+  <BlogForm />
+
+  <section class="container">
     <div class="row justify-content-center">
       <div v-for="Blog in blogs" :key="Blog.id" class="col-md-10 p-0">
         <BlogCard :blogProp="Blog" />
       </div>
     </div>
-    <BlogForm />
   </section>
 </template>
 

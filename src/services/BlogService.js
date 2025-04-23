@@ -4,6 +4,12 @@ import { Blog } from "@/models/Blogs.js"
 import { AppState } from "@/AppState.js"
 
 class BlogService {
+  async createBlog(value) {
+    const response = await api.post('api/blogs', value)
+    logger.log('created blog', response.data)
+    const createdBlog = new Blog(response.data)
+    AppState.profileBlogs.unshift(createdBlog)
+  }
 
   async getBlogsById(profileId) {
     AppState.profileBlogs = []
