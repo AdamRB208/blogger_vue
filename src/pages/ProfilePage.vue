@@ -1,6 +1,7 @@
 <script setup>
 import { AppState } from '@/AppState.js';
 import BlogCard from '@/components/BlogCard.vue';
+import BlogForm from '@/components/BlogForm.vue';
 import { Profile } from '@/models/Profile.js';
 import { blogService } from '@/services/BlogService.js';
 import { profileService } from '@/services/ProfileService.js';
@@ -64,6 +65,7 @@ async function getBlogsById() {
         <BlogCard :blogProp="Blog" />
       </div>
     </div>
+    <BlogForm />
   </section>
 </template>
 
