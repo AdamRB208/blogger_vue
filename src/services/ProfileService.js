@@ -12,10 +12,6 @@ class ProfileService {
     AppState.activeProfile = profile
   }
 
-  async getBlogsById(profileId) {
-    const response = await api.get(`api/blogs?creatorId=${profileId}`)
-    logger.log('got blogs by id!', response.data)
-  }
 
 }
 

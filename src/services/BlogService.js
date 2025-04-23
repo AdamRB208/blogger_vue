@@ -4,6 +4,13 @@ import { Blog } from "@/models/Blogs.js"
 import { AppState } from "@/AppState.js"
 
 class BlogService {
+
+  async getBlogsById(profileId) {
+    const response = await api.get(`api/blogs?creatorId=${profileId}`)
+    logger.log('got blogs by id!', response.data)
+    AppState.profileBlogs = response.data.map(blogData => new Blog(blogData))
+  }
+
   setActiveBlog(blogProp) {
     AppState.activeBlog = blogProp
     logger.log('setting active blog', blogProp)

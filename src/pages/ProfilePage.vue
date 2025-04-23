@@ -2,6 +2,7 @@
 import { AppState } from '@/AppState.js';
 import BlogCard from '@/components/BlogCard.vue';
 import { Profile } from '@/models/Profile.js';
+import { blogService } from '@/services/BlogService.js';
 import { profileService } from '@/services/ProfileService.js';
 import { logger } from '@/utils/Logger.js';
 import { Pop } from '@/utils/Pop.js';
@@ -13,7 +14,7 @@ const route = useRoute()
 
 const profile = computed(() => AppState.activeProfile)
 
-const blogs = computed(() => AppState.blogs)
+const blogs = computed(() => AppState.profileBlogs)
 
 
 onMounted(() => {
@@ -39,7 +40,7 @@ async function getProfileById() {
 
 async function getBlogsById() {
   try {
-    await profileService.getBlogsById(route.params.profileId)
+    await blogService.getBlogsById(route.params.profileId)
   }
   catch (error) {
     Pop.error(error, 'COULD NOT GET BLOGS BY ID');
