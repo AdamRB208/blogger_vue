@@ -6,6 +6,7 @@ import { Profile } from "@/models/Profile.js"
 class ProfileService {
 
   async getProfileById(profileId) {
+    AppState.activeProfile = null
     const response = await api.get(`api/profiles/${profileId}`)
     logger.log('got profile by id', response.data)
     const profile = new Profile(response.data)

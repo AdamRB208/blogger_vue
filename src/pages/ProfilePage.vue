@@ -53,13 +53,14 @@ async function getBlogsById() {
 <template>
   <section class="container">
     <div v-if="profile" class="row justify-content-center">
-      <div class="col-md-10 d-flex justify-content-evenly m-5 border border-custom-purple rounded-4 p-3">
+      <div
+        class="col-md-10 d-flex justify-content-evenly m-5 border border-3 border-custom-purple rounded-4 p-3 profile-card">
         <img :src="profile.picture" :alt="`profile image of ${profile.name}`" class="profile-img">
         <h3>{{ profile.name }}</h3>
       </div>
     </div>
-    <div class="row">
-      <div v-for="Blog in blogs" :key="Blog.id" class="col-md-9">
+    <div class="row justify-content-center">
+      <div v-for="Blog in blogs" :key="Blog.id" class="col-md-10 p-0">
         <BlogCard :blogProp="Blog" />
       </div>
     </div>
@@ -81,7 +82,7 @@ h3 {
   align-items: center;
 }
 
-.col-md-10 {
+.profile-card {
   background-color: rgba(128, 128, 128, 0.531);
 }
 </style>

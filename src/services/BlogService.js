@@ -6,6 +6,7 @@ import { AppState } from "@/AppState.js"
 class BlogService {
 
   async getBlogsById(profileId) {
+    AppState.profileBlogs = []
     const response = await api.get(`api/blogs?creatorId=${profileId}`)
     logger.log('got blogs by id!', response.data)
     AppState.profileBlogs = response.data.map(blogData => new Blog(blogData))
