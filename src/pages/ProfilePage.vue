@@ -15,6 +15,8 @@ const route = useRoute()
 
 const profile = computed(() => AppState.activeProfile)
 
+const account = computed(() => AppState.account)
+
 const blogs = computed(() => AppState.profileBlogs)
 
 
@@ -57,15 +59,16 @@ async function getBlogsById() {
       <div
         class="col-md-10 d-flex justify-content-evenly m-5 border border-3 border-custom-purple rounded-4 p-3 profile-card">
         <img :src="profile.picture" :alt="`profile image of ${profile.name}`" class="profile-img">
-        <h3>{{ profile.name }}</h3>
+        <h2>{{ profile.name }}</h2>
       </div>
     </div>
   </section>
 
-  <BlogForm />
+  <BlogForm v-if="profile?.id == account?.id && account" />
 
   <section class="container">
     <div class="row justify-content-center">
+      <h3 class="d-flex justify-content-center">{{ profile.name }}'s Blogs</h3>
       <div v-for="Blog in blogs" :key="Blog.id" class="col-md-10 p-0">
         <BlogCard :blogProp="Blog" />
       </div>
@@ -83,9 +86,13 @@ async function getBlogsById() {
   object-fit: cover;
 }
 
-h3 {
+h2 {
   display: inline-flex;
   align-items: center;
+}
+
+h3 {
+  color: #B8ED12;
 }
 
 .profile-card {
