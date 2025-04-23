@@ -17,11 +17,15 @@ const blog = computed(() => AppState.activeBlog)
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
+          <img :src="blog.imgUrl" :alt="`image for ${blog.creator.name}'s blog post`" class="blog-img w-100 mb-3">
           <p>{{ blog.body }}</p>
+          <p>-{{ blog.creator.name }}</p>
+        </div>
+        <div>
+          <p>{{ blog.tags }}</p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
         </div>
       </div>
     </div>
@@ -29,4 +33,13 @@ const blog = computed(() => AppState.activeBlog)
 </template>
 
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.blog-img {
+  max-height: 20em;
+  object-fit: cover;
+}
+
+.blogModal {
+  --bs-modal-width: 700px;
+}
+</style>
