@@ -2,7 +2,6 @@
 import { AppState } from '@/AppState.js';
 import BlogCard from '@/components/BlogCard.vue';
 import BlogForm from '@/components/BlogForm.vue';
-import { Profile } from '@/models/Profile.js';
 import { blogService } from '@/services/BlogService.js';
 import { profileService } from '@/services/ProfileService.js';
 import { logger } from '@/utils/Logger.js';
@@ -28,7 +27,6 @@ onMounted(() => {
 watch(route, () => {
   getProfileById()
   getBlogsById()
-
 })
 
 
@@ -47,8 +45,8 @@ async function getBlogsById() {
     await blogService.getBlogsById(route.params.profileId)
   }
   catch (error) {
-    Pop.error(error, 'COULD NOT GET BLOGS BY ID');
-    logger.log('could not get blogs by id', error)
+    Pop.error(error, 'COULD NOT GET BLOGS BY PROFILE ID');
+    logger.log('could not get blogs by profile id', error)
   }
 }
 </script>

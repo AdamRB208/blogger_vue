@@ -1,7 +1,6 @@
 <script setup>
 import { AppState } from '@/AppState.js';
 import BlogCard from '@/components/BlogCard.vue';
-import { Blog } from '@/models/Blogs.js';
 import { blogService } from '@/services/BlogService.js';
 import { logger } from '@/utils/Logger.js';
 import { Pop } from '@/utils/Pop.js';
@@ -34,7 +33,7 @@ async function getBlogs() {
       </div>
     </div>
   </section>
-  <BlogModal />
+  <!-- <BlogModal /> -->
 </template>
 
 <style scoped lang="scss"></style>

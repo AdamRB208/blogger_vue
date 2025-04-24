@@ -4,6 +4,15 @@ import { Blog } from "@/models/Blogs.js"
 import { AppState } from "@/AppState.js"
 
 class BlogService {
+  async getBlogByBlogId(blogId) {
+    AppState.activeBlog = null
+    const response = await api.get(`api/blogs/${blogId}`)
+    logger.log('got blogs by blog id', response.data)
+    const blog = new Blog(response.data)
+    AppState.activeBlog = blog
+    logger.log('rendering active blogs', AppState.activeBlog)
+  }
+
   async deleteBlog(blogId) {
     const response = await api.delete(`api/blogs/${blogId}`)
     logger.log('deleted blog', response.data)
@@ -22,14 +31,14 @@ class BlogService {
   async getBlogsById(profileId) {
     AppState.profileBlogs = []
     const response = await api.get(`api/blogs?creatorId=${profileId}`)
-    logger.log('got blogs by id!', response.data)
+    logger.log('got blogs by profile id!', response.data)
     AppState.profileBlogs = response.data.map(blogData => new Blog(blogData))
   }
 
-  setActiveBlog(blogProp) {
-    AppState.activeBlog = blogProp
-    logger.log('setting active blog', blogProp)
-  }
+  // setActiveBlog(blogProp) {
+  //   AppState.activeBlog = blogProp
+  //   logger.log('setting active blog', blogProp)
+  // }
 
   async getBlogs() {
     const response = await api.get('api/blogs')

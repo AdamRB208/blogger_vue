@@ -12,10 +12,10 @@ const props = defineProps({
   blogProp: { type: Blog, required: true }
 })
 
-function setActiveBlog() {
-  blogService.setActiveBlog(props.blogProp)
-  logger.log('Set active blog!')
-}
+// function setActiveBlog() {
+//   blogService.setActiveBlog(props.blogProp)
+//   logger.log('Set active blog!')
+// }
 
 async function deleteBlog(blogId) {
   try {
@@ -45,12 +45,14 @@ async function deleteBlog(blogId) {
       </RouterLink>
     </div>
     <div>
-      <button @click.prevent="setActiveBlog()" type="button" class="btn btn-none rounded-4" data-bs-toggle="modal"
-        data-bs-target="#blogModal">
+      <!-- <button @click.prevent="setActiveBlog()" type="button" class="btn btn-none rounded-4" data-bs-toggle="modal"
+        data-bs-target="#blogModal"> -->
+      <RouterLink :to="{ name: 'BlogDetails', params: { blogId: blogProp.id } }">
         <img
           :src="blogProp.imgUrl || 'https://media.istockphoto.com/id/1573249349/photo/cat-face-meme.webp?a=1&b=1&s=612x612&w=0&k=20&c=kqbadSpx9y1sUvUjbO-zTr4iRDv2inL5XfOhts5-jGs='"
           :alt="blogProp.id" class="image-fluid mb-2 rounded-4">
-      </button>
+      </RouterLink>
+      <!-- </button> -->
       <div class="blog-content">
         <h4>{{ blogProp.title }}</h4>
         <p class="blog-body">{{ blogProp.body }}</p>
@@ -58,7 +60,7 @@ async function deleteBlog(blogId) {
           <button v-if="blogProp.creator?.id == account?.id" @click="deleteBlog(blogProp.id)" type="button"
             class="btn btn-custom-purple rounded-4 mt-2 delete-btn">Delete Blog</button>
           <small>Posted {{ blogProp.createdAt.toLocaleDateString()
-          }}</small>
+            }}</small>
         </span>
       </div>
     </div>
