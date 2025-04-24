@@ -4,6 +4,12 @@ import { Blog } from "@/models/Blogs.js"
 import { AppState } from "@/AppState.js"
 
 class BlogService {
+  async getCommentsByBlogId(blogId) {
+    AppState.activeBlog = null
+    const response = await api.get(`api/blogs/${blogId}/comments`)
+    logger.log('got comments', response.data)
+  }
+
   async getBlogByBlogId(blogId) {
     AppState.activeBlog = null
     const response = await api.get(`api/blogs/${blogId}`)

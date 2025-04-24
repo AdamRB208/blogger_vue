@@ -14,6 +14,7 @@ const blog = computed(() => AppState.activeBlog)
 onMounted(() => {
   AppState.activeBlog
   getBlogByBlogId()
+  getCommentsByBlogId()
 })
 
 async function getBlogByBlogId() {
@@ -23,6 +24,16 @@ async function getBlogByBlogId() {
   catch (error) {
     Pop.error(error, 'COULD NOT GET BLOGS BY Blog ID');
     logger.log('could not get blogs by blog id', error)
+  }
+}
+
+async function getCommentsByBlogId() {
+  try {
+    await blogService.getCommentsByBlogId(route.params.blogId)
+  }
+  catch (error) {
+    Pop.error(error, 'COULD NOT GET COMMENTS');
+    logger.log('could not get comments', error)
   }
 }
 
@@ -59,7 +70,11 @@ async function getBlogByBlogId() {
         </div>
       </div>
     </div>
-
+    <div class="row justify-content-center">
+      <div class="col-md-10 border border-3 border-custom-purple rounded-4 mt-5">
+        <div>Comments will go here</div>
+      </div>
+    </div>
   </section>
   <p v-else>Loading</p>
 </template>
@@ -72,5 +87,12 @@ async function getBlogByBlogId() {
   border-radius: 50%;
   display: flex;
   justify-content: flex-start;
+}
+
+img:not(.creator-img) {
+  max-height: 50dvh;
+  width: 100dvh;
+  max-width: 100%;
+  object-fit: cover;
 }
 </style>
