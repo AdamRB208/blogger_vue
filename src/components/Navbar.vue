@@ -35,6 +35,11 @@ watch(theme, () => {
               About
             </RouterLink>
           </li>
+          <li>
+            <RouterLink :to="{ name: 'Account' }" class="btn rounded-pill text-custom-purple selectable">
+              Account
+            </RouterLink>
+          </li>
         </ul>
         <!-- LOGIN COMPONENT HERE -->
         <div class="ms-auto">

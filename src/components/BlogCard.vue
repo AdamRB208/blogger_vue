@@ -61,7 +61,7 @@ async function deleteBlog(blogId) {
           <button v-if="blogProp.creator?.id == account?.id" @click="deleteBlog(blogProp.id)" type="button"
             class="btn btn-custom-purple rounded-4 mt-2 delete-btn">Delete Blog</button>
           <small>Posted {{ blogProp.createdAt.toLocaleDateString()
-            }}</small>
+          }}</small>
         </span>
       </div>
     </div>
