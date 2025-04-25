@@ -58,7 +58,7 @@ async function getCommentsByBlogId() {
             <img :src="blog.creator.picture" alt="" class="d-flex flex-start creator-img">
           </div>
           <div class="mt-3 mb-3 d-flex justify-content-center align-items-center">
-            <span class="ms-3">
+            <span class="m-3">
               <h1>{{ blog.title }}</h1>
               <small class="d-flex flex-column ms-0">By {{ blog.creator.name }}</small>
               <small>Created on {{ blog.createdAt.toLocaleDateString() }}</small>
