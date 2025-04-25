@@ -14,6 +14,7 @@ export const AppState = reactive({
   activeProfile: null,
   /** @type {import('./models/Blogs.js').Blog[]} user info from the Codeworks API*/
   profileBlogs: [],
-
+  /** @type {import('./models/Comments.js').Comments[]} user info from the Codeworks API*/
+  Comments: [],
 })
 

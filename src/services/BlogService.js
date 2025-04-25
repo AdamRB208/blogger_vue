@@ -2,12 +2,15 @@ import { logger } from "@/utils/Logger.js"
 import { api } from "./AxiosService.js"
 import { Blog } from "@/models/Blogs.js"
 import { AppState } from "@/AppState.js"
+import { Comments } from "@/models/Comments.js"
 
 class BlogService {
   async getCommentsByBlogId(blogId) {
-    AppState.activeBlog = null
+    AppState.Comments = []
     const response = await api.get(`api/blogs/${blogId}/comments`)
     logger.log('got comments', response.data)
+    AppState.Comments = response.data.map(commentData => new Comments(commentData))
+    logger.log(AppState.Comments)
   }
 
   async getBlogByBlogId(blogId) {

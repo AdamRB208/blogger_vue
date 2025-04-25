@@ -10,6 +10,8 @@ const route = useRoute()
 
 const blog = computed(() => AppState.activeBlog)
 
+const comment = computed(() => AppState.Comments)
+
 
 onMounted(() => {
   AppState.activeBlog
@@ -71,8 +73,9 @@ async function getCommentsByBlogId() {
       </div>
     </div>
     <div class="row justify-content-center">
-      <div class="col-md-10 border border-3 border-custom-purple rounded-4 mt-5">
-        <div>Comments will go here</div>
+      <div v-for="comment in comment" :key="comment.id"
+        class="col-md-10 border border-3 border-custom-purple rounded-4 mt-5">
+        <div>{{ comment.body }}</div>
       </div>
     </div>
   </section>
