@@ -45,7 +45,7 @@ async function getCommentsByBlogId() {
 <template>
   <section class="container" v-if="blog">
     <div class="row justify-content-center">
-      <div class="col-md-10 border border-3 border-custom-purple rounded-4 mt-5">
+      <div class="col-md-10 border border-3 border-custom-purple rounded-4 mt-5 post-card">
         <div class="mt-3 mb-3 d-flex flex-column align-items-center">
           <div>
             <img
@@ -60,22 +60,26 @@ async function getCommentsByBlogId() {
           <div class="mt-3 mb-3 d-flex justify-content-center align-items-center">
             <span class="ms-3">
               <h1>{{ blog.title }}</h1>
-              <small class="d-flex flex-column ms-0">{{ blog.creator.name }}</small>
+              <small class="d-flex flex-column ms-0">By {{ blog.creator.name }}</small>
               <small>Created on {{ blog.createdAt.toLocaleDateString() }}</small>
             </span>
           </div>
         </div>
         <div>
           <div>
-            <p class="d-block fs-3 p-3">{{ blog.body }}</p>
+            <p class="d-block fs-4 p-3">{{ blog.body }}</p>
           </div>
         </div>
       </div>
     </div>
     <div class="row justify-content-center">
       <div v-for="comment in comment" :key="comment.id"
-        class="col-md-10 border border-3 border-custom-purple rounded-4 mt-5">
-        <div>{{ comment.body }}</div>
+        class="col-md-10 border border-3 border-custom-purple rounded-4 mt-5 comment-card">
+        <span class="d-flex p-2">
+          <img :src="comment.creator.picture" alt="" class="comment-img me-5">
+          <div class="d-flex align-items-center">{{ comment.creator.name }}</div>
+        </span>
+        <p class="d-flex justify-content-center">{{ comment.body }}</p>
       </div>
     </div>
   </section>
@@ -92,10 +96,24 @@ async function getCommentsByBlogId() {
   justify-content: flex-start;
 }
 
-img:not(.creator-img) {
+img:not(.creator-img, .comment-img) {
   max-height: 50dvh;
   width: 100dvh;
   max-width: 100%;
   object-fit: cover;
+}
+
+.comment-img {
+  height: 5em;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+}
+
+.post-card {
+  background-color: rgba(128, 128, 128, 0.531);
+}
+
+.comment-card {
+  background-color: rgba(128, 128, 128, 0.531);
 }
 </style>

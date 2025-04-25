@@ -38,7 +38,7 @@ async function deleteBlog(blogId) {
   <!-- TODO this needs to go on an individual page not the card -->
   <!-- <h3 class="d-flex justify-content-center">{{ blogProp.creator.name }}'s Blogs'</h3> -->
   <div class="mt-3 mb-3 border border-3 border-custom-purple rounded-4 p-2 blog-card">
-    <div class="">
+    <div>
       <RouterLink :to="{ name: 'Profile', params: { profileId: blogProp.creatorId } }">
         <img :src="blogProp.creator.picture" alt="profile picture for user" class="creator-img me-3 mb-3"
           :title="`Check out ${blogProp.creator.name}'s profile'`">
@@ -61,7 +61,7 @@ async function deleteBlog(blogId) {
           <button v-if="blogProp.creator?.id == account?.id" @click="deleteBlog(blogProp.id)" type="button"
             class="btn btn-custom-purple rounded-4 mt-2 delete-btn">Delete Blog</button>
           <small>Posted {{ blogProp.createdAt.toLocaleDateString()
-          }}</small>
+            }}</small>
         </span>
       </div>
     </div>
